@@ -17,7 +17,7 @@ class Schedule_Day:
 
         label1 = Label(self.schedule_day, text="For any change in details,\n please change the details on the home "
                                                "screen")
-        label1.pack(fill = BOTH)
+        label1.pack(fill=BOTH)
 
         self.data = _input.data
         self.schedule = Schedule(self.data, self.input.K, self.input.n, self.input.B, self.input.C)
@@ -40,7 +40,7 @@ class Schedule_Day:
 
         if self.curr_interval < self.input.n * self.input.K:
             K, n, B, C = self.input.K, self.input.n, self.input.B, self.input.C
-            print(K, n, B, C)
+
             data = self.data.get_data()
 
             sum_intervals_today = self.schedule.get_next_day(data, K, n, B, C)
@@ -59,7 +59,7 @@ class Schedule_Day:
                 self.my_list.insert(END, val)
 
                 i += 1
-            self.my_list.pack(side=LEFT, fill=BOTH, padx = 50)
+            self.my_list.pack(side=LEFT, fill=BOTH, padx=50)
             self.scrollbar.config(command=self.my_list.yview)
 
             self.curr_interval += sum_intervals_today

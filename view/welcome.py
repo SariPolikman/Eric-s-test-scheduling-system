@@ -11,7 +11,7 @@ class Welcome:
 
         import tkinter as tk
         from PIL import Image, ImageTk
-        file = r"C:\Users\User\Documents\שרי\Israel_It\view\images.jpg"
+        file = r"..\Israel_It\view\images.jpg"
         image = Image.open(file)
         photo_image = ImageTk.PhotoImage(image)
         label = Label(self.root, image=photo_image)

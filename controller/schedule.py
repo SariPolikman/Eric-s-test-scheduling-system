@@ -1,5 +1,3 @@
-from time import strftime
-
 from controller.queues import Queues
 from datetime import datetime, date, timedelta
 
@@ -30,7 +28,7 @@ class Schedule:
         self.queues = Queues(K, n, data)
 
         self.curr_time = self.B
-        print(self.curr_time)
+
         self.update_schedule(0, 0)
         self.curr_time += timedelta(minutes=int(self.data.data[0][0]))
 
@@ -44,21 +42,32 @@ class Schedule:
     def get_next_day(self, data, K, n, B, C):
         self.set_details(data, K, n, B, C)
 
-        self.time_interval, self.participant, self.num_interval = self.queues.get_best_fit()
+        self.time_interval, self.participant, self.num_interval = self.queues.get_best_fit(0)
         sum_interval_today = 0
 
+        # Choosing the longest test at each stage
         while self.curr_time + timedelta(minutes=int(self.time_interval)) < self.C:
             sum_interval_today += 1
 
-            self.time_interval, self.participant, self.num_interval = self.queues.get_best_fit()
+            self.time_interval, self.participant, self.num_interval = self.queues.get_best_fit(0)
             self.update_schedule(self.num_interval, self.participant)
             self.curr_time += timedelta(minutes=int(self.time_interval))
 
         self.curr_date += timedelta(days=1)
         date_str = self.curr_date.strftime("%D")
         self.schedule[date_str] = {}
-        self.curr_time = self.B
 
+        # The next big one doesn’t come in, we put in little ones until the end of the day
+        self.time_interval, self.participant, self.num_interval = self.queues.get_best_fit(1)
+        while self.curr_time + timedelta(minutes=int(self.time_interval)) < self.C:
+
+            sum_interval_today += 1
+
+            self.time_interval, self.participant, self.num_interval = self.queues.get_best_fit(1)
+            self.update_schedule(self.num_interval, self.participant)
+            self.curr_time += timedelta(minutes=int(self.time_interval))
+
+        self.curr_time = self.B
         return sum_interval_today
 
     def update_schedule(self, interval, participant):

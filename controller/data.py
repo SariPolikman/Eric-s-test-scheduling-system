@@ -1,7 +1,5 @@
 import os
 from tkinter import filedialog
-from tkinter.filedialog import askopenfile
-from openpyxl import load_workbook
 
 from numpy.random import seed
 from numpy.random import randint
@@ -10,17 +8,16 @@ import xlsxwriter
 
 class Data:
     data = [[], []]
-    path = r'C:\Users\User\Documents\שרי\Israel_It\model\Experimental_data.xlsx'
+    path = r'..\Israel_It\model\Experimental_data.xlsx'
 
     def save_excel(self):
         import pandas as pd
         df = pd.read_excel(self.path)  # can also index sheet by name or fetch all sheets
         self.data[0] = df['A'].tolist()
         self.data[1] = df['B'].tolist()
-        print(self.data)
 
     def open_file(self):
-        filename = filedialog.askopenfilename(initialdir="C:/", title="select file",
+        filename = filedialog.askopenfilename(initialdir="C:/", title="select experimental data",
                                               filetypes=[('Excel', ('*.xls', '*.xslm', '*.xlsx'))])
         os.system(filename)
         self.save_excel()

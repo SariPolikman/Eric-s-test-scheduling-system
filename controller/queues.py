@@ -18,12 +18,19 @@ class Queues:
         b = [(i, 0) for i in range(0, K)]
         self.ready[a] = b
 
-    def get_best_fit(self):
+    # A flag that keeps whether is now the best choice is minimum or maximum
+    def dispatch_dict(self, flag, _dict):
+        return {
+            0: lambda: max(_dict),
+            1: lambda: min(_dict),
+        }.get(flag)()
+
+    def get_best_fit(self, flag = 0):
 
         if not self.ready:
             self.hole()
 
-        time_interval = min(self.ready)
+        time_interval = self.dispatch_dict(flag, self.ready)
 
         participant, num_interval = self.ready[time_interval][0][0], self.ready[time_interval][0][1]
 
