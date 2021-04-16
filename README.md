@@ -9,7 +9,7 @@ The long tests create "bubbles" of dead times, if a short slice of time remains 
 #### If the ready-made dictionary is empty, we will take the tasks from the waiting dictionary with the least waiting time left for them.
 #### In each iteration we will update the relevant tests to the appropriate dictionaries.
 # HOME_PAGE
-Home page, where there are two buttons,
+Home page, where there are two buttons,\
 edit the data or immediately start with the daily scheduling with default values.
 #
 ![home_page](https://user-images.githubusercontent.com/57223094/114956577-d6f2f980-9e67-11eb-91dd-cb0c48541287.PNG)
