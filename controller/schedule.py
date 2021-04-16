@@ -42,6 +42,16 @@ class Schedule:
     def get_next_day(self, data, K, n, B, C):
         self.set_details(data, K, n, B, C)
 
+        self.curr_time = self.B
+
+        if self.curr_date.weekday() == 4:
+            self.curr_date += timedelta(days=2)
+        else:
+            self.curr_date += timedelta(days=1)
+
+        date_str = self.curr_date.strftime("%D")
+        self.schedule[date_str] = {}
+
         self.time_interval, self.participant, self.num_interval = self.queues.get_best_fit(0)
         sum_interval_today = 0
 
@@ -63,10 +73,7 @@ class Schedule:
             self.update_schedule(self.num_interval, self.participant)
             self.curr_time += timedelta(minutes=int(self.time_interval))
 
-        self.curr_time = self.B
-        self.curr_date += timedelta(days=1)
-        date_str = self.curr_date.strftime("%D")
-        self.schedule[date_str] = {}
+
 
         return sum_interval_today
 

@@ -47,8 +47,8 @@ class Schedule_Day:
 
             self.curr_interval += 1
 
-            time_str = (self.schedule.curr_date - timedelta(days=1)).strftime("%D")
-            self.label2 = Label(self.schedule_day, text=f"date: {time_str}")
+            time_str = self.schedule.curr_date.strftime('%D')
+            self.label2 = Label(self.schedule_day, text=f"{self.schedule.curr_date.strftime('%A')}, date: {time_str}")
 
             self.label2.pack(side=TOP)
             self.my_list = Listbox(self.schedule_day, yscrollcommand=self.scrollbar.set, width=80)
