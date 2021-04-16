@@ -8,19 +8,22 @@ import xlsxwriter
 
 class Data:
     data = [[], []]
-    path = r'..\Israel_It\model\Experimental_data.xlsx'
+    # path = r'..\Israel_It\model\Experimental_data.xlsx'
+    path = r'C:\Users\User\Documents\שרי\Israel_It\model\Experimental_data.xlsx'
 
-    def save_excel(self):
+    def save_excel(self, filename):
         import pandas as pd
-        df = pd.read_excel(self.path)  # can also index sheet by name or fetch all sheets
+        df = pd.read_excel(filename)
+        print(filename)
+        print(df)
         self.data[0] = df['A'].tolist()
         self.data[1] = df['B'].tolist()
 
     def open_file(self):
-        filename = filedialog.askopenfilename(initialdir="C:/", title="select experimental data",
+        filename = filedialog.askopenfilename(initialdir="r'..\Israel_It\model\Experimental_data.xlsx'", title="select experimental data",
                                               filetypes=[('Excel', ('*.xls', '*.xslm', '*.xlsx'))])
-        os.system(self.path)
-        self.save_excel()
+        os.system(filename)
+        self.save_excel(filename)
 
     def init_demo(self, n):
         # generate random integer values

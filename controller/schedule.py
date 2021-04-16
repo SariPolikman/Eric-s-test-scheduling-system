@@ -53,10 +53,6 @@ class Schedule:
             self.update_schedule(self.num_interval, self.participant)
             self.curr_time += timedelta(minutes=int(self.time_interval))
 
-        self.curr_date += timedelta(days=1)
-        date_str = self.curr_date.strftime("%D")
-        self.schedule[date_str] = {}
-
         # The next big one doesn’t come in, we put in little ones until the end of the day
         self.time_interval, self.participant, self.num_interval = self.queues.get_best_fit(1)
         while self.curr_time + timedelta(minutes=int(self.time_interval)) < self.C:
@@ -68,6 +64,10 @@ class Schedule:
             self.curr_time += timedelta(minutes=int(self.time_interval))
 
         self.curr_time = self.B
+        self.curr_date += timedelta(days=1)
+        date_str = self.curr_date.strftime("%D")
+        self.schedule[date_str] = {}
+
         return sum_interval_today
 
     def update_schedule(self, interval, participant):
