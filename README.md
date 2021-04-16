@@ -2,12 +2,12 @@
 # Distinction:
 The long tests create "bubbles" of dead times, if a short slice of time remains the long tasks will not be able to enter it, (and if only long tasks remain there are many bubbles), a relative balance must be maintained between the number of long and short tests in one day,
 # My Solution:
-### At each stage we will keep two dictionaries, the dictionary of the ready and the dictionary of the waiting,
-### In each selection we will choose the longest test from the ready ones, 
-### as soon as it is over that the last test does not have enough time to finish before the end of the day,
-### we will systematically choose the shortest task from the waiting list.
-### If the ready-made dictionary is empty, we will take the tasks from the waiting dictionary with the least waiting time left for them.
-### In each iteration we will update the relevant tests to the appropriate dictionaries.
+##### At each stage we will keep two dictionaries, the dictionary of the ready and the dictionary of the waiting,
+##### In each selection we will choose the longest test from the ready ones, 
+##### as soon as it is over that the last test does not have enough time to finish before the end of the day,
+##### we will systematically choose the shortest task from the waiting list.
+##### If the ready-made dictionary is empty, we will take the tasks from the waiting dictionary with the least waiting time left for them.
+##### In each iteration we will update the relevant tests to the appropriate dictionaries.
 # HOME_PAGE
 ![home_page](https://user-images.githubusercontent.com/57223094/114956577-d6f2f980-9e67-11eb-91dd-cb0c48541287.PNG)
 # CHANGE_DETAILES_PAGE
