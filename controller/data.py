@@ -19,7 +19,7 @@ class Data:
     def open_file(self):
         filename = filedialog.askopenfilename(initialdir="C:/", title="select experimental data",
                                               filetypes=[('Excel', ('*.xls', '*.xslm', '*.xlsx'))])
-        os.system(filename)
+        os.system(self.path)
         self.save_excel()
 
     def init_demo(self, n):

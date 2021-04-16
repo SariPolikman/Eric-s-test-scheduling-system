@@ -79,7 +79,7 @@ class Input_Window:
         C_entry = tk.Entry(self.root, textvariable=self.C_var, font=('calibre', 10, 'normal'))
         btn_C = Button(self.root, text="submit", command=self.submit_C)
 
-        data_label = tk.Label(self.root, text='Edit the experiment data', font=('calibre', 10, 'bold'))
+        data_label = tk.Label(self.root, text='Select the experiment data, edit and save', font=('calibre', 10, 'bold'))
         data_btn = Button(self.root, text='Open', command=self.data.open_file)
 
         # placing the label and entry in
