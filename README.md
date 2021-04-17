@@ -24,7 +24,7 @@ from the moment the data is saved - the timing calculation will be according to 
 ##
 ![image](https://user-images.githubusercontent.com/57223094/114956775-3bae5400-9e68-11eb-9966-9ea2fe170354.png)
 
-## SCHEDULE DAYLEY
+## Daily scheduling
 Daily scheduling, submission of effective daily scheduling, on weekdays between the set times,\
 at any stage you can access the home page and change the values for the next day
 ## 
