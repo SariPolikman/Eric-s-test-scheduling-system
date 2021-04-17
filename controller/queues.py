@@ -1,8 +1,27 @@
 from collections import defaultdict
 
+# from main import MAX, MIN, FIRST, TEST_TIME, WAIT_TIME, PARTICIPANT, INTERVAL
+FIRST = 0
+
+TEST_TIME = 0
+WAIT_TIME = 1
+
+PARTICIPANT = 0
+INTERVAL = 1
+
+MAX = 0
+MIN = 1
+
+
+# A flag that keeps whether is now the best choice is minimum or maximum
+def dispatch_dict(flag, _dict):
+    return {
+        MAX: lambda: max(_dict),
+        MIN: lambda: min(_dict),
+    }.get(flag)()
+
 
 class Queues:
-    was_hole = 0
 
     def __init__(self, K, n, data):
         self.waiting = defaultdict(list)
@@ -14,32 +33,27 @@ class Queues:
 
         self.data = data.data
 
-        a = int(self.data[0][0])
+        a = int(self.data[TEST_TIME][FIRST])
         b = [(i, 0) for i in range(0, K)]
         self.ready[a] = b
 
-    # A flag that keeps whether is now the best choice is minimum or maximum
-    def dispatch_dict(self, flag, _dict):
-        return {
-            0: lambda: max(_dict),
-            1: lambda: min(_dict),
-        }.get(flag)()
+    def get_best_fit(self, flag=MAX):
 
-    def get_best_fit(self, flag = 0):
-
+        # if all the relevant tests in waiting state
         if not self.ready:
             self.hole()
 
-        time_interval = self.dispatch_dict(flag, self.ready)
+        # get nax or min time_interval
+        time_interval = dispatch_dict(flag, self.ready)
 
-        participant, num_interval = self.ready[time_interval][0][0], self.ready[time_interval][0][1]
+        participant = self.ready[time_interval][FIRST][PARTICIPANT]
+        num_interval = self.ready[time_interval][FIRST][INTERVAL]
 
         self.update_queues(time_interval, participant, num_interval)
 
         return time_interval, participant, num_interval
 
     def hole(self):
-        self.was_hole += 1
 
         key = min(self.waiting)
         vales = self.waiting[key]
@@ -48,15 +62,13 @@ class Queues:
         self.update_time_over(key - self.total_time_over)
 
         # moved the smallest wait to ready
-
-        a = ((self.data[0][val[1]], val) for val in vales)
+        smallest = ((self.data[TEST_TIME][val[INTERVAL]], val) for val in vales)
 
         # merge dict (update_ready)
-        for k, v in a:
+        for k, v in smallest:
             self.ready[k].append(v)
 
         # removed from wait
-
         self.waiting.pop(key)
         # self.waiting.pop(key)
 
@@ -75,7 +87,7 @@ class Queues:
 
         # insert the wait if it isn't the last
         if num_interval + 1 < self.num_of_interval:
-            self.waiting[self.data[1][num_interval] + self.total_time_over].append(
+            self.waiting[self.data[WAIT_TIME][num_interval] + self.total_time_over].append(
                 (participant, num_interval + 1))
 
         # Moving from the waiting to the ready queue
@@ -89,7 +101,7 @@ class Queues:
 
     def update_ready(self, time_interval, can_ready):
         # delete from ready
-        self.doing.append(self.ready[time_interval].pop(0))
+        self.doing.append(self.ready[time_interval].pop(FIRST))
         if not self.ready[time_interval]:
             self.ready.pop(time_interval)
 
@@ -97,4 +109,4 @@ class Queues:
         # merge dict (update_ready)
         for k, values in can_ready:
             for v in values:
-                self.ready[self.data[0][v[1]]].append(v)
+                self.ready[self.data[TEST_TIME][v[INTERVAL]]].append(v)
