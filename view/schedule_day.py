@@ -39,9 +39,9 @@ class Schedule_Day:
         self.label2.destroy()
 
         if self.curr_interval < self.input.n * self.input.K:
-            print(self.input.K, self.input.n, self.input.B, self.input.C)
+
             K, n, B, C = self.input.K, self.input.n, self.input.B, self.input.C
-            print(self.input.K, self.input.n, self.input.B, self.input.C)
+
             data = self.data.get_data()
 
             sum_intervals_today = self.schedule.get_next_day(data, K, n, B, C)
