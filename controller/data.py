@@ -5,7 +5,7 @@ from numpy.random import seed
 from numpy.random import randint
 import xlsxwriter
 
-from controller.project_path import PATH
+from project_path import PATH
 
 
 class Data:

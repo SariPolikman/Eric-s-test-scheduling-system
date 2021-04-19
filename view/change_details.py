@@ -1,8 +1,8 @@
 # import openpyxl and tkinter modules
 from openpyxl import *
 from tkinter import *
-
-wb = load_workbook(r'C:\Users\User\Documents\שרי\Israel_It\view\task.xlsx')
+from project_path import PATH
+wb = load_workbook(PATH + r'\view\task.xlsx')
 
 # create the sheet object
 sheet = wb.active
