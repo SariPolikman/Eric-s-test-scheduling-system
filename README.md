@@ -1,4 +1,10 @@
 # Eric's test scheduling system
+## How to run the solution:
+To run the solution make sure that:\
+* Python packages are installed for you: tkinter, xlsxwriter, filedialog, pandas\
+* In the controller / project_path file the path variable contains the strip of the computer folder where you saved the project.\
+* Now you can run the main file.\
+#### Successfully !\
 ## Distinction:
 The long tests create "bubbles" of dead times,\
 if a short slice of time remains the long tasks will not be able to enter it,\
