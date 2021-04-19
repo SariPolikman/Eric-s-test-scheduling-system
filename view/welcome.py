@@ -3,6 +3,8 @@ from tkinter import *
 from view.input_window import Input_Window
 from view.schedule_day import Schedule_Day
 
+from project_path import PATH
+
 
 class Welcome:
     def __init__(self):
@@ -11,7 +13,7 @@ class Welcome:
 
         import tkinter as tk
         from PIL import Image, ImageTk
-        file = r"..\Israel_It\view\images.jpg"
+        file = PATH + r"\view\images.jpg"
         image = Image.open(file)
         photo_image = ImageTk.PhotoImage(image)
         label = Label(self.root, image=photo_image)
