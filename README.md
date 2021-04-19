@@ -2,8 +2,9 @@
 ## How to run the solution:
 To run the solution make sure that:
 * Python packages are installed for you: tkinter, xlsxwriter, filedialog, pandas
-* In the controller / project_path file the path variable contains the strip of the computer folder where you saved the project.
+* In the "controller/project_path" file the PATH variable contains the strip of the computer folder where you saved the project.
 * Now you can run the main file.
+* In order to change data while moving, the daily planning window must be closed, and after the change it must be developed again
 #### Successfully !
 ## Distinction:
 The long tests create "bubbles" of dead times,\
