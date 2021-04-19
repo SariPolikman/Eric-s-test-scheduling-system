@@ -27,7 +27,8 @@ edit the data or immediately start with the daily scheduling with default values
 ## CHANGE_DETAILES_PAGE
 Data change page, where you can wake up each of the fields and save, \
 you can also edit the experiment file where all the experiment values are stored (test times and standby times), \
-from the moment the data is saved - the timing calculation will be according to the new values
+from the moment the data is saved - the timing calculation will be according to the new values\
+Note that if there has been a test that the patient has already prepared for, we will postpone the change after his test
 ### Please make sure you change data that is still relevant
 ##
 ![image](https://user-images.githubusercontent.com/57223094/114956775-3bae5400-9e68-11eb-9966-9ea2fe170354.png)
