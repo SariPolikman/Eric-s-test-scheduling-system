@@ -1,1 +1,2 @@
-PATH = r'C:\Users\User\Documents\שרי\Israel_It'
+import os
+PATH = os.path.abspath(os.getcwd())
